@@ -1,0 +1,26 @@
+name: 'DBT_transform_comments'
+version: '1.0.0'
+
+profile: 'DBT_transform_comments'
+
+# Chemins vers les différents types de fichiers
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+
+models:
+  DBT_transform_comments:
+    staging:
+      +materialized: view
+      +enabled: true     # Assurez-vous que les modèles sont activés
+    silver:
+      +materialized: table
+      +enabled: true
