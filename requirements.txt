@@ -1,0 +1,4 @@
+dbt-core>=1.7.2,<1.9
+dbt-snowflake>=1.8.4,<1.9
+pytest
+
