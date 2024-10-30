@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: csv_S3
+    database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    schema: S3_CSV_RAW_DATA
+    tables:
+      - name: csv_ingestion_from_S3 # Remplacez par le nom exact de la table

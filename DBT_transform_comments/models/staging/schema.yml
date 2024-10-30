@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_csv_S3_comments
+    description: "Transformation des commentaires provenant du fichier CSV importé de S3"
+    columns:
+      - name: review_title
+        description: "Titre du commentaire"
+        tests:
+          - not_null
+      - name: review_text
+        description: "Contenu du commentaire"
+      - name: review_date
+        description: "Date du commentaire"
+      - name: author
+        description: "Auteur du commentaire"
+
+  - name: stg_judge_me_comments
+    description: "Transformation des commentaires provenant de Judge.me"
+    columns:
+      - name: review_title
+        description: "Titre du commentaire Judge.me"
+        tests:
+          - not_null
+      - name: review_text
+        description: "Contenu du commentaire Judge.me"
+      - name: review_date
+        description: "Date du commentaire Judge.me"
+      - name: author
+        description: "Auteur du commentaire Judge.me"
+      - name: product_title
+        description: "Titre du produit associé au commentaire"

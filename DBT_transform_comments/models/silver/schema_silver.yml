@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: silver_comments
+    description: "Table consolidée des commentaires provenant de Judge.me et du CSV de S3"
+    columns:
+      - name: review_title
+        description: "Titre du commentaire"
+        tests:
+          - not_null
+      - name: review_text
+        description: "Contenu du commentaire"
+      - name: review_date
+        description: "Date de création du commentaire"
+      - name: author
+        description: "Auteur du commentaire"
+      - name: product_title
+        description: "Titre du produit (pour les commentaires provenant de Judge.me)"

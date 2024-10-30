@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: judge_me
+    database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+    schema: 
+    tables:
+      - name: reviews
