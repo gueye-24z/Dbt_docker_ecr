@@ -69,7 +69,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test  # Exécute le déploiement uniquement si le job de tests réussit
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
