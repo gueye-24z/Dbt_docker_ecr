@@ -63,7 +63,6 @@ jobs:
 
       - name: Run pytest tests
         run: 
-          cd DBT_transform_comments
           pytest ./DBT_transform_comments/tests/unit
 
   # Job de Déploiement
