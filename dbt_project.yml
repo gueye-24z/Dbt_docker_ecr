@@ -22,7 +22,7 @@ models:
       +materialized: view
       +enabled: true     # Assurez-vous que les modèles sont activés
     silver:
-      +materialized: table
+      +materialized: incremental
       +enabled: true
       +schema: 'SILVER_SCHEMA'  # Schéma pour la couche silver
     gold:

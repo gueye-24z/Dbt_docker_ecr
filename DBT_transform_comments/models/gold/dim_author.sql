@@ -1,7 +1,6 @@
 {{ config(
     materialized='incremental',
     unique_key='author_id',
-    schema='GOLD_SCHEMA',
     enabled=true
 ) }}
 

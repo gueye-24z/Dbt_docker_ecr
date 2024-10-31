@@ -1,5 +1,6 @@
 {{ config(
-    materialized='table',
+    materialized='incremental',
+    unique_key='COMMENT_ID_FROM_SOURCE',
     enabled=true
 ) }}
 
@@ -25,7 +26,7 @@ csv_reviews as (
     from {{ ref('stg_csv_S3_comments') }}
 ),
 
--- Fusion des deux sources avec ajout d'un ID auto-incrémental
+-- Fusion des deux sources
 combined_reviews as (
     select
         row_number() over(order by COMMENT_ID_FROM_SOURCE ASC) as id,  -- Génération d'un identifiant unique auto-incrémental
@@ -42,4 +43,8 @@ combined_reviews as (
     )
 )
 
+-- Sélection finale en mode incrémental
 select * from combined_reviews
+{% if is_incremental() %}
+where COMMENT_ID_FROM_SOURCE not in (select COMMENT_ID_FROM_SOURCE from {{ this }})
+{% endif %}
