@@ -1,7 +1,5 @@
 {{ config(
-    materialized='incremental',
-    unique_key='COMMENT_ID_FROM_SOURCE',
-    enabled=true
+  enabled=true
 ) }}
 
 with raw_data as (
@@ -13,10 +11,7 @@ with raw_data as (
         AUTHOR_TITLE as author
     from {{ source('csv_S3', 'csv_ingestion_from_S3') }}
     
-    {% if is_incremental() %}
-        -- Filtrer pour récupérer uniquement les nouvelles données basées sur `REVIEW_ID`
-        where REVIEW_ID > (select max(COMMENT_ID_FROM_SOURCE) from {{ this }})
-    {% endif %}
+
 )
 
 select * from raw_data

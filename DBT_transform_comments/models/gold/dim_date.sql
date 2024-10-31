@@ -31,3 +31,7 @@ dates_to_insert AS (
 )
 
 SELECT * FROM dates_to_insert
+
+{% if is_incremental() %}
+  WHERE NOT EXISTS (SELECT 1 FROM {{ this }}) OR review_date NOT IN (SELECT review_date FROM {{ this }})
+{% endif %}

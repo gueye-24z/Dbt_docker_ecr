@@ -1,6 +1,4 @@
 {{ config(
-    materialized='incremental',
-    unique_key='COMMENT_ID_FROM_SOURCE',
     enabled=true
 ) }}
 
@@ -14,10 +12,6 @@ with raw_data as (
         TITLE as review_title
     from {{ source('judge_me', 'reviews') }}
     
-    {% if is_incremental() %}
-        -- Filtrer pour récupérer uniquement les nouvelles données basées sur `ID`
-        where ID > (select max(COMMENT_ID_FROM_SOURCE) from {{ this }})
-    {% endif %}
 )
 
 select * from raw_data

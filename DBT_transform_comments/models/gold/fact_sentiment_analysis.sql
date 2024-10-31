@@ -32,3 +32,7 @@ SELECT
     sentiment,
     CURRENT_DATE AS load_date
 FROM sentiment_analysis
+
+{% if is_incremental() %}
+  WHERE NOT EXISTS (SELECT 1 FROM {{ this }})
+{% endif %}
