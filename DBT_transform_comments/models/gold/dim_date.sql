@@ -1,5 +1,5 @@
 {{ config(
-    materialized='incremental',
+    materialized='table',
     unique_key='date_id',
     enabled=true
 ) }}
@@ -31,7 +31,3 @@ dates_to_insert AS (
 )
 
 SELECT * FROM dates_to_insert
-
-{% if is_incremental() %}
-  WHERE NOT EXISTS (SELECT 1 FROM {{ this }}) OR review_date NOT IN (SELECT review_date FROM {{ this }})
-{% endif %}

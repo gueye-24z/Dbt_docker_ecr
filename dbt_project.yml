@@ -24,8 +24,8 @@ models:
     silver:
       +materialized: incremental
       +enabled: true
-      +schema: 'SILVER_SCHEMA'  # Schéma pour la couche silver
+
     gold:
-      +materialized: incremental  # Matérialisation par défaut pour la couche gold
+      +materialized: table  # Matérialisation par défaut pour la couche gold
       +enabled: true
       +schema: 'GOLD_SCHEMA'

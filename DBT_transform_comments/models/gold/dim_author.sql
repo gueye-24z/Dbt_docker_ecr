@@ -1,5 +1,5 @@
 {{ config(
-    materialized='incremental',
+    materialized='table',
     unique_key='author_id',
     enabled=true
 ) }}
@@ -24,7 +24,3 @@ authors_to_insert AS (
 )
 
 SELECT * FROM authors_to_insert
-
-{% if is_incremental() %}
-  WHERE NOT EXISTS (SELECT 1 FROM {{ this }}) OR author_name NOT IN (SELECT author_name FROM {{ this }})
-{% endif %}
