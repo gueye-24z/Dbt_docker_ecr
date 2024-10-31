@@ -22,7 +22,7 @@ models:
       +materialized: view
       +enabled: true     # Assurez-vous que les modèles sont activés
     silver:
-      +materialized: incremental
+      +materialized: table
       +enabled: true
 
     gold:

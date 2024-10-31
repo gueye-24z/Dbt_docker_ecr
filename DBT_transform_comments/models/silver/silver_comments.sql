@@ -1,6 +1,5 @@
 {{ config(
-    materialized='incremental',
-    unique_key='COMMENT_ID_FROM_SOURCE',
+    materialized='table',,
     enabled=true
 ) }}
 
@@ -43,8 +42,4 @@ combined_reviews as (
     )
 )
 
--- Sélection finale en mode incrémental
-select * from combined_reviews
-{% if is_incremental() %}
-where COMMENT_ID_FROM_SOURCE not in (select COMMENT_ID_FROM_SOURCE from {{ this }})
-{% endif %}
+
