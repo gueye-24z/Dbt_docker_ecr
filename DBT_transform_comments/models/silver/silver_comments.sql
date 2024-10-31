@@ -42,4 +42,4 @@ combined_reviews as (
     )
 )
 
-
+select * from combined_reviews
