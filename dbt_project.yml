@@ -22,10 +22,10 @@ models:
       +materialized: view
       +enabled: true     # Assurez-vous que les modèles sont activés
     silver:
-      +materialized: table
+      +materialized: view
       +enabled: true
 
     gold:
       +materialized: table  # Matérialisation par défaut pour la couche gold
       +enabled: true
-      +schema: 'GOLD_SCHEMA'
+
