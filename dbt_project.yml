@@ -26,6 +26,7 @@ models:
       +enabled: true
 
     gold:
+      +schema: 'GOLD_SCHEMA'
       +materialized: table  # Matérialisation par défaut pour la couche gold
       +enabled: true
 
