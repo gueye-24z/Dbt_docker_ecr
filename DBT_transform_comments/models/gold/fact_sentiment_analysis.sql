@@ -1,6 +1,5 @@
 {{ config(
     materialized='table',
-    unique_key='id',
     enabled=true
 ) }}
 
@@ -19,7 +18,7 @@ WITH sentiment_analysis AS (
             WHEN SYSTEM$SENTIMENT(review_text) < 0 THEN 'Négatif'
             ELSE 'Neutre'
         END AS sentiment
-    FROM {{ ref('silver_comments') }}
+    from {{ source('silver', 'silver_comments') }}
 )
 
 SELECT

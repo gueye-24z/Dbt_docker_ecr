@@ -1,13 +1,12 @@
 {{ config(
     materialized='table',
-    unique_key='author_id',
     enabled=true
 ) }}
 
 WITH new_authors AS (
     SELECT DISTINCT
         author AS author_name  -- Nom de l'auteur
-    FROM {{ ref('silver_comments') }}
+    from {{ source('silver', 'silver_comments') }}
 ),
 
 existing_authors AS (

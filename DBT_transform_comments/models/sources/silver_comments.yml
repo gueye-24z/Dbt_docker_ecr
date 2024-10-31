@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: silver
+    database: reviews
+    schema: SILVER_SCHEMA
+    tables:
+      - name: silver_comments

@@ -1,13 +1,12 @@
 {{ config(
     materialized='table',
-    unique_key='date_id',
     enabled=true
 ) }}
 
 WITH new_dates AS (
     SELECT DISTINCT
         review_date
-    FROM {{ ref('silver_comments') }}
+    from {{ source('silver', 'silver_comments') }}
     WHERE review_date IS NOT NULL
 ),
 
