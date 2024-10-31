@@ -1,5 +1,6 @@
 {{ config(
     materialized='table',
+    schema='GOLD_SCHEMA',
     enabled=true
 ) }}
 
