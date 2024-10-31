@@ -28,7 +28,7 @@ csv_reviews as (
 -- Fusion des deux sources avec ajout d'un ID auto-incrémental
 combined_reviews as (
     select
-        row_number() over() as id,  -- Génération d'un identifiant unique auto-incrémental
+        row_number() over(order by COMMENT_ID_FROM_SOURCE ASC) as id,  -- Génération d'un identifiant unique auto-incrémental
         COMMENT_ID_FROM_SOURCE,
         review_title,
         review_text,
