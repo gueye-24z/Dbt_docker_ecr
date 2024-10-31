@@ -7,7 +7,7 @@ DBT_transform_comments:
       role: "{{ env_var('SNOWFLAKE_ROLE') }}"
       database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-      schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
+      schema: GOLD_SCHEMA
       threads: 1
       type: snowflake
   target: dev
