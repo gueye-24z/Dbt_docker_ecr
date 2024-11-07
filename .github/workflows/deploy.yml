@@ -110,7 +110,3 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-3.amazonaws.com/dbt_transform_comments:v0.1
-
-
-
-

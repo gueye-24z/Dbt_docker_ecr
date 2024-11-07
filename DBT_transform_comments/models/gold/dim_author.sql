@@ -1,26 +1,19 @@
 {{ config(
-    materialized='table',
-    schema='GOLD_SCHEMA',
     enabled=true
 ) }}
 
-WITH new_authors AS (
-    SELECT DISTINCT
-        author AS author_name  -- Nom de l'auteur
-    from {{ source('silver', 'silver_comments') }}
-),
-
-existing_authors AS (
-    SELECT author_name FROM {{ this }}  -- Récupère les auteurs déjà présents dans la dimension
-),
-
-authors_to_insert AS (
+WITH authors_to_insert AS (
     SELECT 
-        row_number() OVER (ORDER BY author_name) + COALESCE((SELECT MAX(author_id) FROM {{ this }}), 0) AS author_id,
-        author_name
-    FROM new_authors
-    WHERE author_name IS NOT NULL
-    AND author_name NOT IN (SELECT author_name FROM existing_authors)
+        DISTINCT author
+    FROM {{ ref('silver_comments') }}
+    WHERE author IS NOT NULL
+),
+
+author_ids AS (
+    SELECT
+        row_number() OVER (ORDER BY author) AS author_id,
+        author
+    FROM authors_to_insert
 )
 
-SELECT * FROM authors_to_insert
+SELECT * FROM author_ids
