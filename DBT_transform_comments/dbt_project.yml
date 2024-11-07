@@ -4,12 +4,12 @@ version: '1.0.0'
 profile: 'DBT_transform_comments'
 
 # Chemins vers les différents types de fichiers
-model-paths: ["DBT_transform_comments/models"]
-analysis-paths: ["DBT_transform_comments/analyses"]
-test-paths: ["DBT_transform_comments/tests"]
-seed-paths: ["DBT_transform_comments/seeds"]
-macro-paths: ["DBT_transform_comments/macros"]
-snapshot-paths: ["DBT_transform_comments/snapshots"]
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
 
 clean-targets:
   - "target"
