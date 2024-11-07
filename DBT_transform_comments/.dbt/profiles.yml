@@ -7,11 +7,7 @@ DBT_transform_comments:
       role: "{{ env_var('SNOWFLAKE_ROLE') }}"
       database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
       warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-<<<<<<< HEAD
       schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
-=======
-      schema: GOLD_SCHEMA
->>>>>>> ca465c2 (feat: creation table silver)
       threads: 1
       type: snowflake
   target: dev
