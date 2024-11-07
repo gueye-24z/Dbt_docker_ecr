@@ -1,0 +1,34 @@
+name: 'DBT_transform_comments'
+version: '1.0.0'
+
+profile: 'DBT_transform_comments'
+
+# Chemins vers les différents types de fichiers
+model-paths: ["DBT_transform_comments/models"]
+analysis-paths: ["DBT_transform_comments/analyses"]
+test-paths: ["DBT_transform_comments/tests"]
+seed-paths: ["DBT_transform_comments/seeds"]
+macro-paths: ["DBT_transform_comments/macros"]
+snapshot-paths: ["DBT_transform_comments/snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+
+models:
+  DBT_transform_comments:
+    staging:
+      +materialized: view
+      +enabled: true     # Assurez-vous que les modèles sont activés
+    silver:
+      +materialized: table
+      +enabled: true
+
+    gold:
+      +schema: 'GOLD_SCHEMA'
+      +materialized: table  # Matérialisation par défaut pour la couche gold
+      +enabled: true
+
+
+
