@@ -1,39 +1,39 @@
 variable "SNOWFLAKE_DATABASE" {
     type = string
-    description
+    description = Base de données de travail
 }
 
 variable "SNOWFLAKE_ACCOUNT" {
     type = string
-    description
+    description = Compte snowflake
 }
 
 variable "SNOWFLAKE_SCHEMA" {
     type = string
-    description
+    description = Schéma snowflake contenant les tables
 }
 
 variable "SNOWFLAKE_USER" {
     type = string
-    description
+    description = Utilisateur snowflake
 }
 
 variable "SNOWFLAKE_WAREHOUSE" {
     type = string
-    description
+    description = Warehouse snowflake
 }
 
 variable "SNOWFLAKE_ROLE" {
     type = string
-    description
+    description = Role snowflake
 }
 
 variable "SNOWFLAKE_PASSWORD" {
     type = string
-    description
+    description = Mot de passe snowflake
 }
 
 variable "TASK_NAME" {
     type = string
-    description
+    description = Nom de la tache
 }
