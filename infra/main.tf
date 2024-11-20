@@ -76,7 +76,7 @@ resource "aws_ecs_task_definition" "my_task" {
         value = var.SNOWFLAKE_WAREHOUSE
       },
       {
-        name  = "SNOWFLAKE_NEW_SCHEMA"
+        name  = "SNOWFLAKE_SCHEMA"
         value = var.SNOWFLAKE_SCHEMA
       }
     ]
