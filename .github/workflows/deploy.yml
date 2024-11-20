@@ -130,7 +130,6 @@ jobs:
         id: plan
         run: terraform -chdir=infra plan
         env:
-          TF_VAR_SNOWFLAKE_TYPE: "snowflake"
           TF_VAR_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           TF_VAR_SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
           TF_VAR_SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
@@ -143,7 +142,6 @@ jobs:
       - name: Terraform Apply
         run: terraform -chdir=infra apply -auto-approve
         env:
-          TF_VAR_SNOWFLAKE_TYPE: "snowflake"
           TF_VAR_SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           TF_VAR_SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
           TF_VAR_SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
